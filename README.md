@@ -20,7 +20,7 @@ Ultimately I would like this to be the "JS scaffolding" that I use on most of my
 
 * You have FEATURES (e.g. an "attachment uploader") that you might want to apply to a particular page (features being generic / reusable / applicable to multiple pages).
 
-* The 'page' is available as a meta element in the header. That's how we know which page init function to call. The page is just meta[name=page][context=pagename] - so where pagename=page1 (this is an example pagename from the test folder), Sparkles.Pages.page1.init() gets called. Which in the example calls more stuff. No other extra crap gets called. It's a nice (if poorly explained) way of ensuring that you only execute certain code on certain pages.
+* The 'page' is available as a meta element in the header. That's how we know which page init function to call. The page is just meta[name=page][context=pagename] - so where pagename=page1 (this is an example pagename from the test folder), Sparkles.Pages.page1.init() gets called. Which in the example calls another function within the namespace. No other extra crap gets called. It's a nice (if poorly explained) way of ensuring that you only execute certain code on certain pages.
 
 * I liked the more structured approach of having an init() function for something that you want to call, so if you add a page or feature in the meta tags, their respective init functions will be called first. You are responsible for calling any other functions from within this function.
 
@@ -36,16 +36,16 @@ Sparky is fantastic, and if that was my only option then I would be all over it.
 
 I don't expect my modification to be useful to many people but me. It would be great if there were people out there that found it useful in some way, but mostly, it's just my (very similar to Sparky, albeit tweaked to favour my particular dev style) interpretation of what I think makes a good JS scaffold.
 
-That said, it is very much a work in progress. It is 2-3 hours of work piggy-backed on top of somebody elses much more well-thought out work. I hope (and plan, through usage) to make it more awesome over time. I think that it is ready for smaller projects already, so I imagine that I will just grow over time.
+That said, it is very much a work in progress. It is 2-3 hours of work piggy-backed on top of somebody elses much more well-thought out work. I hope (and plan, through usage) to make it more awesome over time. I think that it is ready for smaller projects already, so I imagine that it will just grow over time.
 
 ##Why am I rambling so much?
 
-I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening at my interpretation of Sparky.js, which I read about the previous evening in bed at 1am on my Nexus 7 (and was inspired).
+I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening at my interpretation of Sparky.js, which I read about at work (and was inspired).
 
 I like this kinda stuff. New ways to structure javascript? That's pretty exciting.
 
 ##Why is it called js-sensi?
 
-Offical line: it's a sensible way to structure your JavaScript files. (as in, "sensi")
+Offical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble)
 
-Unofficial-line: no comment, you can probably figure it out (as in, "sensi")
+Unofficial-line: you're a front-end developer; you can probably use your imagination.
