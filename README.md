@@ -4,11 +4,11 @@
 
 ##What is js-sensi?
 
-I was inspired by the work of @jakiestfu when he released [Sparky.js](http://sparkyjs.com "Sparky.js homepage") upon the world. I immediately saw great potentional in what he was trying to achieve: a no-frills, well-defined and structured JS framework - putting the organised fun (and sanity) back into JavaScript.
+I was inspired by the work of [@jakiestfu](https://github.com/jakiestfu) when he released [Sparky.js](http://sparkyjs.com "Sparky.js homepage") upon the world. I immediately saw great potentional in what he was trying to achieve: a no-frills, well-defined and structured JS framework - putting the organised fun (and sanity) back into JavaScript.
 
-I have been muddling along with a custom $.feature function which controls which JS should be executed and when, even (espeically?) when dealing with a compiled JS file. It works fine, but I've always thought that there must be more. @jakiestfu showed me more!
+I have been muddling along with a custom $.feature function which controls which JS should be executed and when, even (espeically?) when dealing with a compiled JS file. It works fine, but I've always thought that there must be more. [@jakiestfu](https://github.com/jakiestfu) showed me more!
 
-The only problem was, the way that @jakiestfu works is a bit different to mine. And that's just an inevitablity - there is no one "right" way to do things, especially in 2012.
+The only problem was, the way that [@jakiestfu](https://github.com/jakiestfu) works is a bit different to mine. And that's just an inevitablity - there is no one "right" way to do things, especially in 2012.
 
 He encouraged customisation. So the same night after reading the article, I went home from work (on a Friday no less) and created a rough draft of how I would like his super-structured framework to work (in a few hours). So please bear with me if it's super-rough around the edges.
 
