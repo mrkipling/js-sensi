@@ -40,12 +40,14 @@ That said, it is very much a work in progress. It is 2-3 hours of work piggy-bac
 
 ##Why am I rambling so much?
 
-I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening at my interpretation of Sparky.js, which I read about at work (and was inspired).
+I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening at my interpretation of Sparky.js, which I read about at work.
 
-I like this kinda stuff. New ways to structure javascript? That's pretty exciting.
+I like this kinda stuff. New ways to structure javascript? That's pretty exciting. Well, sort-of exciting, at least.
+
+Beer + writing a README = rambling.
 
 ##Why is it called js-sensi?
 
-Offical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble)
+Offiical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble)
 
 Unofficial-line: you're a front-end developer; you can probably use your imagination.
