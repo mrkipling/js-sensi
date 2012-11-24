@@ -34,18 +34,12 @@ var Sensi = Sensi || (function ($) {
         },
         init_page: function () {
             var page = Utils.settings.meta.page;
-
-            if (typeof Pages[page] === 'undefined') {
-                return;
-            }
-
-            if (typeof Pages[page].init !== 'undefined') {
+            if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
                 Pages[page].init.call();
             }
         },
         init_features: function () {
             var features = Utils.settings.meta.features;
-
             for (var i = 0; i < features.length; i++) {
                 if (typeof Features[features[i]] !== 'undefined' && typeof Features[features[i]].init !== 'undefined') {
                     Features[features[i]].init.call();
