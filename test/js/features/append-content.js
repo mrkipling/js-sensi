@@ -1,10 +1,10 @@
-Sparkles.Features['append-content'] = {
+Sensi.Features['append-content'] = {
 
     description: "Appends some content to the #content element.",
 
     init: function () {
         $('#content').append('<p>Hello! I am appending content to this element.</p>');
-        Sparkles.Features['append-content'].extra();
+        Sensi.Features['append-content'].extra();
     },
 
     extra: function () {

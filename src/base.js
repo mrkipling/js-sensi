@@ -1,4 +1,4 @@
-var Sparkles = Sparkles || (function ($) {
+var Sensi = Sensi || (function ($) {
 
     var Utils    = {}, // toolbox
         Pages    = {}, // page-specific logic
@@ -75,4 +75,4 @@ var Sparkles = Sparkles || (function ($) {
 
 })(window.jQuery);
 
-jQuery(document).ready(Sparkles.App.init);
+jQuery(document).ready(Sensi.App.init);
