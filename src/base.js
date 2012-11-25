@@ -12,28 +12,31 @@ var Sensi = Sensi || (function ($) {
                 features: [],
                 currentUser: -1
             },
+
             init: function() {
+                // get the page name
                 Utils.settings.meta.page = $('meta[name="page"]').attr("content");
 
+                // get the current user ID
                 var userid = $('meta[name="userid"]').attr("content");
                 if (typeof userid !== 'undefined') {
 		    Utils.settings.meta.currentUser = userid;
                 }
 
+                // get the list of features
                 Utils.settings.meta.features = $('meta[name="features"]').attr("content").split(' ');
             }
         },
-        log: function (what) {
-            if (DEBUG) {
-                console.log(what);
-            }
-        },
+
+        // run page-specific code
         init_page: function () {
             var page = Utils.settings.meta.page;
             if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
                 Pages[page].init.call();
             }
         },
+
+        // initalise all required features
         init_features: function () {
             var features = Utils.settings.meta.features;
             for (var i = 0; i < features.length; i++) {
@@ -42,17 +45,23 @@ var Sensi = Sensi || (function ($) {
                 }
             }
         }
+
+        log: function (what) {
+            if (DEBUG) {
+                console.log(what);
+            }
+        }
     };
 
-    _log = Utils.log;
+    var _log = Utils.log;
 
     // App
 
     App = {
         init: function() {
-            Utils.settings.init();
-            Utils.init_page();
-            Utils.init_features();
+            Utils.settings.init(); // populate the meta values
+            App.init_page();       // initialise page-specific JS, if it exists
+            App.init_features();   // initialise all of the fetures
         }
     };
 
