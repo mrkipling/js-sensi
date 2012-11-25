@@ -44,8 +44,9 @@ var Sensi = Sensi || (function ($) {
                     Features[features[i]].init.call();
                 }
             }
-        }
+        },
 
+        // wrapper for console.log
         log: function (what) {
             if (DEBUG) {
                 console.log(what);
@@ -53,15 +54,15 @@ var Sensi = Sensi || (function ($) {
         }
     };
 
-    var _log = Utils.log;
+    // let's make this available globally
+    _log = Utils.log;
 
     // App
-
     App = {
         init: function() {
             Utils.settings.init(); // populate the meta values
-            App.init_page();       // initialise page-specific JS, if it exists
-            App.init_features();   // initialise all of the fetures
+            Utils.init_page();       // initialise page-specific JS, if it exists
+            Utils.init_features();   // initialise all of the fetures
         }
     };
 
