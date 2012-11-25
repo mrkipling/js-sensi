@@ -23,10 +23,6 @@ var Sensi = Sensi || (function ($) {
                 Utils.settings.meta.features = $('meta[name="features"]').attr("content").split(' ');
             }
         },
-        cache: {
-            window: window,
-            document: document
-        },
         log: function (what) {
             if (DEBUG) {
                 console.log(what);
@@ -48,7 +44,7 @@ var Sensi = Sensi || (function ($) {
         }
     };
 
-    _log = Utils.log; // expose it globally... what's the worst that could happen
+    _log = Utils.log;
 
     // App
 
