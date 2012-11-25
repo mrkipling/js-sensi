@@ -8,7 +8,7 @@ Sensi.Features['append-content'] = {
     },
 
     extra: function () {
-        $('#content').append('<p><strong>Bonus function:</strong> I think that you are perdy.</p>');
+        $('#content').append('<p><strong>Bonus function:</strong> user ' + (Sensi.App.user_logged_in() ? 'is' : 'is not') + ' logged in.</p>');
     }
 
 };
