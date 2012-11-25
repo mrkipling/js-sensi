@@ -25,6 +25,29 @@ var Sensi = Sensi || (function ($) {
 
                 // get the list of features
                 Utils.settings.meta.features = $('meta[name="features"]').attr("content").split(' ');
+            },
+
+            info: function () {
+                _log('\nInformation on activated features\n');
+
+                for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
+                    var feature_name = Utils.settings.meta.features[i];
+                    var feature_object = Features[feature_name];
+
+                    if (typeof feature_object === 'undefined') {
+                        _log(i + 1 + '. ' + feature_name + " could not be found.", 'warn');
+                    } else {
+                        var feature_description;
+
+                        if (typeof feature_object.description !== 'undefined') {
+                            feature_description = '"' + feature_object.description + '"';
+                        } else {
+                            feature_description = "No description provided."
+                        }
+
+                        _log((i + 1) + '. ' + feature_name + ' - ' + feature_description);
+                    }
+                }
             }
         },
 
@@ -47,9 +70,22 @@ var Sensi = Sensi || (function ($) {
         },
 
         // wrapper for console.log
-        log: function (what) {
+        log: function (what, type) {
             if (DEBUG) {
-                console.log(what);
+                if (typeof type === 'undefined') {
+                    type = 'log';
+                }
+
+                switch (type) {
+                case 'warn':
+                    console.warn(what); break;
+                case 'error':
+                    console.error(what); break;
+                case 'info':
+                    console.info(what); break;
+                default:
+                    console.log(what);
+                }
             }
         }
     };
