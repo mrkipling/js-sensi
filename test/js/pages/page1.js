@@ -4,11 +4,10 @@ Sensi.Pages['page1'] = {
 
     init: function () {
         _log("Initialising page 1");
-        Sensi.Pages['page1'].extra();
     },
 
-    extra: function () {
-        _log("Extra function on page 1");
+    edit: function () {
+        _log("This is the 'edit' action of page1");
     }
 
 };

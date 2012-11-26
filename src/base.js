@@ -17,6 +17,7 @@ var Sensi = Sensi || (function ($) {
         settings: {
             meta: {
                 page: -1,
+                action: -1,
                 features: [],
                 current_user: -1
             },
@@ -28,10 +29,10 @@ var Sensi = Sensi || (function ($) {
                     Utils.settings.meta.page = page;
                 }
 
-                // get the current user ID
-                var userid = $('meta[name="userid"]').attr("content");
-                if (typeof userid !== 'undefined' && userid !== '') {
-		    Utils.settings.meta.current_user = userid;
+                // get the action
+                var action = $('meta[name="action"]').attr("content");
+                if (typeof action !== 'undefined' && action !== '') {
+                    Utils.settings.meta.action = action;
                 }
 
                 // get the list of features
@@ -44,13 +45,20 @@ var Sensi = Sensi || (function ($) {
                 }
 
                 Utils.settings.meta.features = features;
+
+                // get the current user ID
+                var userid = $('meta[name="userid"]').attr("content");
+                if (typeof userid !== 'undefined' && userid !== '') {
+		    Utils.settings.meta.current_user = userid;
+                }
             },
 
             info: function () {
                 if (!DEBUG) { return; }
 
-                _log('Currently active page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
-                _log('Information on activated features:\n');
+                _log('Page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
+                _log('Action: ' + (Utils.settings.meta.action === -1 ? 'not defined' : Utils.settings.meta.action));
+                _log('\nInformation on activated features:\n');
 
                 for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
                     var feature_name = Utils.settings.meta.features[i];
@@ -111,6 +119,12 @@ var Sensi = Sensi || (function ($) {
             var page = Utils.settings.meta.page;
             if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
                 Pages[page].init.call();
+
+                // call the action, if defined
+                var action = Utils.settings.meta.action;
+                if (action !== -1 && typeof Pages[page][action] !== 'undefined') {
+                    Pages[page][action].call();
+                }
             }
         },
 
