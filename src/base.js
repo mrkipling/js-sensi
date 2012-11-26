@@ -73,24 +73,6 @@ var Sensi = Sensi || (function ($) {
             }
         },
 
-        // run page-specific code
-        init_page: function () {
-            var page = Utils.settings.meta.page;
-            if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
-                Pages[page].init.call();
-            }
-        },
-
-        // initalise all required features
-        init_features: function () {
-            var features = Utils.settings.meta.features;
-            for (var i = 0; i < features.length; i++) {
-                if (typeof Features[features[i]] !== 'undefined' && typeof Features[features[i]].init !== 'undefined') {
-                    Features[features[i]].init.call();
-                }
-            }
-        },
-
         // wrapper for console.log
         log: function (what, type) {
             if (DEBUG) {
@@ -116,11 +98,30 @@ var Sensi = Sensi || (function ($) {
     _log = Utils.log;
 
     // App
+
     App = {
         init: function() {
             Utils.settings.init(); // populate the meta values
-            Utils.init_page();       // initialise page-specific JS, if it exists
-            Utils.init_features();   // initialise all of the fetures
+            App.init_page();       // initialise page-specific JS, if it exists
+            App.init_features();   // initialise all of the fetures
+        },
+
+        // run page-specific code
+        init_page: function () {
+            var page = Utils.settings.meta.page;
+            if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
+                Pages[page].init.call();
+            }
+        },
+
+        // initalise all required features
+        init_features: function () {
+            var features = Utils.settings.meta.features;
+            for (var i = 0; i < features.length; i++) {
+                if (typeof Features[features[i]] !== 'undefined' && typeof Features[features[i]].init !== 'undefined') {
+                    Features[features[i]].init.call();
+                }
+            }
         }
     };
 
