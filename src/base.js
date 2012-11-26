@@ -49,7 +49,7 @@ var Sensi = Sensi || (function ($) {
                 // get the current user ID
                 var userid = $('meta[name="userid"]').attr("content");
                 if (typeof userid !== 'undefined' && userid !== '') {
-		    Utils.settings.meta.current_user = userid;
+                    Utils.settings.meta.current_user = userid;
                 }
             },
 
