@@ -18,7 +18,7 @@ var Sensi = Sensi || (function ($) {
             meta: {
                 page: -1,
                 features: [],
-                currentUser: -1
+                current_user: -1
             },
 
             init: function() {
@@ -31,7 +31,7 @@ var Sensi = Sensi || (function ($) {
                 // get the current user ID
                 var userid = $('meta[name="userid"]').attr("content");
                 if (typeof userid !== 'undefined' && userid !== '') {
-		    Utils.settings.meta.currentUser = userid;
+		    Utils.settings.meta.current_user = userid;
                 }
 
                 // get the list of features
