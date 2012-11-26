@@ -23,16 +23,27 @@ var Sensi = Sensi || (function ($) {
 
             init: function() {
                 // get the page name
-                Utils.settings.meta.page = $('meta[name="page"]').attr("content");
+                var page = $('meta[name="page"]').attr("content");
+                if (typeof page !== 'undefined' && page !== '') {
+                    Utils.settings.meta.page = page;
+                }
 
                 // get the current user ID
                 var userid = $('meta[name="userid"]').attr("content");
-                if (typeof userid !== 'undefined') {
+                if (typeof userid !== 'undefined' && userid !== '') {
 		    Utils.settings.meta.currentUser = userid;
                 }
 
                 // get the list of features
-                Utils.settings.meta.features = $('meta[name="features"]').attr("content").split(' ');
+                var features = $('meta[name="features"]').attr("content");
+
+                if (features === '') {
+                    features = [];
+                } else {
+                    features = features.split(' ');
+                }
+
+                Utils.settings.meta.features = features;
             },
 
             info: function () {
