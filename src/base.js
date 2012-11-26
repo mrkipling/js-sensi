@@ -7,8 +7,8 @@ var Sensi = Sensi || (function ($) {
 
     // if not defined, let's assume that we're not in debug mode
 
-    if (typeof window.DEBUG === 'undefined') {
-        window.DEBUG = false;
+    if (typeof DEBUG === 'undefined') {
+        DEBUG = false;
     }
 
     // Utils
