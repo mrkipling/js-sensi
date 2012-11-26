@@ -28,6 +28,8 @@ var Sensi = Sensi || (function ($) {
             },
 
             info: function () {
+                if (!DEBUG) { return; }
+
                 _log('\nCurrently active page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
                 _log('Information on activated features:\n');
 
@@ -43,7 +45,7 @@ var Sensi = Sensi || (function ($) {
                         if (typeof feature_object.description !== 'undefined') {
                             feature_description = '"' + feature_object.description + '"';
                         } else {
-                            feature_description = "No description provided."
+                            feature_description = "No description provided.";
                         }
 
                         _log((i + 1) + '. ' + feature_name + ' - ' + feature_description);
