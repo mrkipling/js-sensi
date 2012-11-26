@@ -5,6 +5,14 @@ var Sensi = Sensi || (function ($) {
         Features = {}, // generic re-usable features
         App      = {}; // global logic and initialiser
 
+    // if not defined, let's assume that we're not in debug mode
+
+    if (typeof DEBUG === 'undefined') {
+        DEBUG = false;
+    }
+
+    // Utils
+
     Utils = {
         settings: {
             meta: {
