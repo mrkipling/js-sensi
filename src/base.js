@@ -49,7 +49,7 @@ var Sensi = Sensi || (function ($) {
             info: function () {
                 if (!DEBUG) { return; }
 
-                _log('\nCurrently active page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
+                _log('Currently active page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
                 _log('Information on activated features:\n');
 
                 for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
