@@ -60,6 +60,17 @@ var Sensi = Sensi || (function ($) {
                 }
             },
 
+            feature_enabled: function (feature) {
+                var enabled = false;
+                for (var i = 0; i < Utils.settings.meta.features.length; i += 1) {
+                    if (Utils.settings.meta.features[i] === feature) {
+                        enabled = true;
+                        break;
+                    }
+                }
+                return enabled;
+            },
+
             info: function () {
                 if (!DEBUG) { return; }
 
