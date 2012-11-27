@@ -42,6 +42,13 @@ var Sensi = Sensi || (function ($) {
                     features = [];
                 } else {
                     features = features.split(' ');
+                    // get rid of duplicates
+                    features.sort();
+                    for (var i = 1; i < features.length; i++) {
+                        if (features[i] === features[i - 1]) {
+                            features.splice(i--, 1);
+                        }
+                    }
                 }
 
                 Utils.settings.meta.features = features;
