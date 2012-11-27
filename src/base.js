@@ -1,6 +1,6 @@
 var Sensi = Sensi || (function ($) {
 
-    var Utils    = {}, // toolbox
+    var Utils    = {}, // settings and toolbox
         Pages    = {}, // page-specific logic
         Features = {}, // generic re-usable features
         App      = {}; // global logic and initialiser
