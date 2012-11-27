@@ -6,15 +6,15 @@
 
 I was inspired by the work of [@jakiestfu](https://github.com/jakiestfu) when he released [Sparky.js](http://sparkyjs.com "Sparky.js homepage") upon the world. I immediately saw great potentional in what he was trying to achieve: a no-frills, well-defined and structured JS framework - putting the organised fun (and sanity) back into JavaScript.
 
-I have been muddling along with a custom $.feature function which controls which JS should be executed and when, even (especially?) when dealing with a compiled JS files. It works fine, but I've always thought that there must be more. [@jakiestfu](https://github.com/jakiestfu) showed me more!
+I have been muddling along with a custom $.feature function which controls which JS should be executed and when, even (especially?) when dealing with a compiled JS files. It works fine, but I've always thought that there must be more.
 
 The only problem was, the way that [@jakiestfu](https://github.com/jakiestfu) works is a bit different to mine. And that's just an inevitablity - there is no one "right" way to do things, especially in 2012.
 
-He encouraged customisation. So the same night after reading the article, I went home from work (on a Friday no less) and created a rough draft of how I would like his super-structured framework to work (in a few hours). So please bear with me if it's super-rough around the edges.
+He encouraged customisation. So the same night after reading the article, I went home from work (on a Friday no less) and created a rough draft of how I would like his super-structured framework to work (in a few hours). So please bear with me if it's a bit rough around the edges.
 
 ##Using this
 
-Ultimately I would like this to be the "JS scaffolding" that I use on most of my web projects (although admittedly it has a way to go). The way that **I** (and this JS scaffold work) is as follows:
+Ultimately I would like this to be the "JS scaffolding" that I use on most of my web projects (although admittedly it has a way to go). The way that I (and this JS scaffold) work is as follows:
 
 * You have PAGES, and each page either has some code that should be excuted when the DOM is ready, or it doesn't.
 
@@ -32,22 +32,16 @@ Ultimately I would like this to be the "JS scaffolding" that I use on most of my
 
 ##Why not just use Sparky?
 
-Sparky is fantastic, and if that was my only option then I would be all over it. However, I know how I like to write JS code and I had a spare Friday evening (and the skills to change code! fancy that) so I created something that is more suited to my particular needs and development style (no AJAX wrapper, and controller/action stuff removed in favour of pages and features, amongst other things).
-
-I don't expect my modification to be useful to many people but me. It would be great if there were people out there that found it useful in some way, but mostly, it's just my (very similar to Sparky, albeit tweaked to favour my particular dev style) interpretation of what I think makes a good JS scaffold.
+Sparky is fantastic, and if that was my only option then I would be all over it. However, I know how I like to write JS code and I had a spare Friday evening (and the skills to change code! fancy that) so I created something that is more suited to my particular needs and development style (no AJAX wrapper, controller/action tweaked slightly, the addition of features, amongst other things).
 
 That said, it is very much a work in progress. It is 2-3 hours of work piggy-backed on top of somebody elses much more well-thought out work. I hope (and plan, through usage) to make it more awesome over time. I think that it is ready for smaller projects already, so I imagine that it will just grow over time.
 
 ##Why am I rambling so much?
 
-I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening at my interpretation of Sparky.js, which I read about at work.
-
-I like this kinda stuff. New ways to structure javascript? That's pretty exciting. Well, sort-of exciting, at least.
-
-Beer + writing a README = rambling.
+I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening on this. Beer + writing a README = rambling. I'll cut down on the waffle during a later edit, I'm sure.
 
 ##Why is it called js-sensi?
 
-Offiical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble)
+Offiical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble).
 
-Unofficial-line: you're a front-end developer; you can probably use your imagination.
+Unofficial-line: use your imagination. It's a Javascript template, and "js-template" wasn't very catchy...
