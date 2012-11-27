@@ -108,6 +108,8 @@ var Sensi = Sensi || (function ($) {
     // App
 
     App = {
+        logic: {},
+
         init: function() {
             Utils.settings.init(); // populate the meta values
             App.init_page();       // initialise page-specific JS, if it exists
