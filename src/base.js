@@ -147,7 +147,7 @@ var Sensi = Sensi || (function ($) {
         init: function() {
             Utils.settings.init(); // populate the meta values
             App.init_page();       // initialise page-specific JS, if it exists
-            App.init_features();   // initialise all of the fetures
+            App.init_features();   // initialise all of the features
         },
 
         // run page-specific code
