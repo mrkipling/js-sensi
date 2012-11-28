@@ -74,7 +74,23 @@ var Sensi = Sensi || (function ($) {
             info: function () {
                 if (!DEBUG) { return; }
 
-                _log('Page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page));
+                _log('User: ' + (Utils.settings.meta.current_user === -1 ? 'not defined' : Utils.settings.meta.current_user));
+
+                var page_description = '';
+
+                if (Utils.settings.meta.page !== -1) {
+                    var page = Pages[Utils.settings.meta.page];
+
+                    if (typeof page === 'undefined') {
+                        page_description = ' [does not exist]';
+                    } else{
+                        if (typeof page.description !== 'undefined') {
+                            page_description = ' - "' + page.description + '"';
+                        }
+                    }
+                }
+
+                _log('Page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page) + page_description);
                 _log('Action: ' + (Utils.settings.meta.action === -1 ? 'not defined' : Utils.settings.meta.action));
                 _log('\nInformation on activated features:\n');
 
