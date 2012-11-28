@@ -92,24 +92,29 @@ var Sensi = Sensi || (function ($) {
 
                 _log('Page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page) + page_description);
                 _log('Action: ' + (Utils.settings.meta.action === -1 ? 'not defined' : Utils.settings.meta.action));
-                _log('\nInformation on activated features:\n');
 
-                for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
-                    var feature_name = Utils.settings.meta.features[i];
-                    var feature_object = Features[feature_name];
+                if (Utils.settings.meta.features.length === 0) {
+                    _log('Features: none active');
+                } else {
+                    _log('\nInformation on activated features:\n');
 
-                    if (typeof feature_object === 'undefined') {
-                        _log(i + 1 + '. ' + feature_name + " could not be found.", 'warn');
-                    } else {
-                        var feature_description;
+                    for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
+                        var feature_name = Utils.settings.meta.features[i];
+                        var feature_object = Features[feature_name];
 
-                        if (typeof feature_object.description !== 'undefined') {
-                            feature_description = '"' + feature_object.description + '"';
+                        if (typeof feature_object === 'undefined') {
+                            _log(i + 1 + '. ' + feature_name + " could not be found.", 'warn');
                         } else {
-                            feature_description = "No description provided.";
-                        }
+                            var feature_description;
 
-                        _log((i + 1) + '. ' + feature_name + ' - ' + feature_description);
+                            if (typeof feature_object.description !== 'undefined') {
+                                feature_description = '"' + feature_object.description + '"';
+                            } else {
+                                feature_description = "No description provided.";
+                            }
+
+                            _log((i + 1) + '. ' + feature_name + ' - ' + feature_description);
+                        }
                     }
                 }
             }
