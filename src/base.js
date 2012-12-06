@@ -1,4 +1,4 @@
-var Sensi = Sensi || (function ($) {
+var Sensi = Sensi || (function ($, global, undefined) {
 
     var Utils    = {}, // settings and toolbox
         Pages    = {}, // page-specific logic
@@ -7,8 +7,8 @@ var Sensi = Sensi || (function ($) {
 
     // if not defined, let's assume that we're not in debug mode
 
-    if (typeof DEBUG === 'undefined') {
-        DEBUG = false;
+    if (global.DEBUG) {
+        DEBUG = true;
     }
 
     // Utils
@@ -122,21 +122,21 @@ var Sensi = Sensi || (function ($) {
 
         // wrapper for console.log
         log: function (what, type) {
-            if (DEBUG) {
-                if (typeof type === 'undefined') {
-                    type = 'log';
-                }
+            if (!DEBUG) { return; }
 
-                switch (type) {
-                case 'warn':
-                    console.warn(what); break;
-                case 'error':
-                    console.error(what); break;
-                case 'info':
-                    console.info(what); break;
-                default:
-                    console.log(what);
-                }
+            if (typeof type === 'undefined') {
+                type = 'log';
+            }
+
+            switch (type) {
+            case 'warn':
+                console.warn(what); break;
+            case 'error':
+                console.error(what); break;
+            case 'info':
+                console.info(what); break;
+            default:
+                console.log(what);
             }
         }
     };
@@ -187,6 +187,6 @@ var Sensi = Sensi || (function ($) {
         App: App
     };
 
-})(window.jQuery);
+})(window.jQuery, window);
 
 jQuery(document).ready(Sensi.App.init);
