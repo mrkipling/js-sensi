@@ -5,8 +5,19 @@ var Sensi = Sensi || (function ($, global, undefined) {
         Features = {}, // generic re-usable features
         App      = {}; // global logic and initialiser
 
-    // if not defined, let's assume that we're not in debug mode
+    // keep this information private (don't return it as part of the Sensi object)
+    // read it using e.g. Sensi.Private.meta('page')
 
+    var Private = {
+        meta: {
+            page: -1,
+            action: -1,
+            features: [],
+            current_user: -1
+        }
+    };
+
+    // debug mode?
     if (global.DEBUG) {
         DEBUG = true;
     }
@@ -15,24 +26,21 @@ var Sensi = Sensi || (function ($, global, undefined) {
 
     Utils = {
         settings: {
-            meta: {
-                page: -1,
-                action: -1,
-                features: [],
-                current_user: -1
+            meta: function (setting) {
+                return Private.meta[setting];
             },
 
             init: function() {
                 // get the page name
                 var page = $('meta[name="page"]').attr("content");
                 if (typeof page !== 'undefined' && page !== '') {
-                    Utils.settings.meta.page = page;
+                    Private.meta.page = page;
                 }
 
                 // get the action
                 var action = $('meta[name="action"]').attr("content");
                 if (typeof action !== 'undefined' && action !== '') {
-                    Utils.settings.meta.action = action;
+                    Private.meta.action = action;
                 }
 
                 // get the list of features
@@ -51,19 +59,19 @@ var Sensi = Sensi || (function ($, global, undefined) {
                     }
                 }
 
-                Utils.settings.meta.features = features;
+                Private.meta.features = features;
 
                 // get the current user ID
                 var userid = $('meta[name="userid"]').attr("content");
                 if (typeof userid !== 'undefined' && userid !== '') {
-                    Utils.settings.meta.current_user = userid;
+                    Private.meta.current_user = userid;
                 }
             },
 
             feature_enabled: function (feature) {
                 var enabled = false;
-                for (var i = 0; i < Utils.settings.meta.features.length; i += 1) {
-                    if (Utils.settings.meta.features[i] === feature) {
+                for (var i = 0; i < Private.meta.features.length; i += 1) {
+                    if (Private.meta.features[i] === feature) {
                         enabled = true;
                         break;
                     }
@@ -74,12 +82,12 @@ var Sensi = Sensi || (function ($, global, undefined) {
             info: function () {
                 if (!DEBUG) { return; }
 
-                _log('User: ' + (Utils.settings.meta.current_user === -1 ? 'not defined' : Utils.settings.meta.current_user));
+                _log('User: ' + (Private.meta.current_user === -1 ? 'not defined' : Private.meta.current_user));
 
                 var page_description = '';
 
-                if (Utils.settings.meta.page !== -1) {
-                    var page = Pages[Utils.settings.meta.page];
+                if (Private.meta.page !== -1) {
+                    var page = Pages[Private.meta.page];
 
                     if (typeof page === 'undefined') {
                         page_description = ' [does not exist]';
@@ -90,16 +98,16 @@ var Sensi = Sensi || (function ($, global, undefined) {
                     }
                 }
 
-                _log('Page: ' + (Utils.settings.meta.page === -1 ? 'not defined' : Utils.settings.meta.page) + page_description);
-                _log('Action: ' + (Utils.settings.meta.action === -1 ? 'not defined' : Utils.settings.meta.action));
+                _log('Page: ' + (Private.meta.page === -1 ? 'not defined' : Private.meta.page) + page_description);
+                _log('Action: ' + (Private.meta.action === -1 ? 'not defined' : Private.meta.action));
 
-                if (Utils.settings.meta.features.length === 0) {
+                if (Private.meta.features.length === 0) {
                     _log('Features: none active');
                 } else {
                     _log('\nInformation on activated features:\n');
 
-                    for (var i = 0; i < Utils.settings.meta.features.length; i+= 1) {
-                        var feature_name = Utils.settings.meta.features[i];
+                    for (var i = 0; i < Private.meta.features.length; i+= 1) {
+                        var feature_name = Private.meta.features[i];
                         var feature_object = Features[feature_name];
 
                         if (typeof feature_object === 'undefined') {
@@ -157,12 +165,12 @@ var Sensi = Sensi || (function ($, global, undefined) {
 
         // run page-specific code
         init_page: function () {
-            var page = Utils.settings.meta.page;
+            var page = Private.meta.page;
             if (typeof Pages[page] !== 'undefined' && typeof Pages[page].init !== 'undefined') {
                 Pages[page].init.call();
 
                 // call the action, if defined
-                var action = Utils.settings.meta.action;
+                var action = Private.meta.action;
                 if (action !== -1 && typeof Pages[page][action] !== 'undefined') {
                     Pages[page][action].call();
                 }
@@ -171,7 +179,7 @@ var Sensi = Sensi || (function ($, global, undefined) {
 
         // initalise all required features
         init_features: function () {
-            var features = Utils.settings.meta.features;
+            var features = Private.meta.features;
             for (var i = 0; i < features.length; i++) {
                 if (typeof Features[features[i]] !== 'undefined' && typeof Features[features[i]].init !== 'undefined') {
                     Features[features[i]].init.call();
