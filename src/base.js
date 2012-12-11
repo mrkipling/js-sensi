@@ -16,6 +16,8 @@ var Sensi = Sensi || (function ($, global, undefined) {
             current_user: -1
         },
 
+        debug: (typeof global.DEBUG !== 'undefined' && global.DEBUG === true),
+
         init: function() {
             // get the page name
             var page = $('meta[name="page"]').attr("content");
@@ -57,17 +59,16 @@ var Sensi = Sensi || (function ($, global, undefined) {
 
     Private.init();
 
-    // debug mode?
-    if (global.DEBUG) {
-        DEBUG = true;
-    }
-
     // Utils
 
     Utils = {
         settings: {
             meta: function (setting) {
                 return Private.meta[setting];
+            },
+
+            debug: function () {
+                return Private.debug;
             },
 
             feature_enabled: function (feature) {
@@ -82,7 +83,7 @@ var Sensi = Sensi || (function ($, global, undefined) {
             },
 
             info: function () {
-                if (!DEBUG) { return; }
+                if (!Private.debug) { return; }
 
                 _log('User: ' + (Private.meta.current_user === -1 ? 'not defined' : Private.meta.current_user));
 
@@ -132,7 +133,7 @@ var Sensi = Sensi || (function ($, global, undefined) {
 
         // wrapper for console.log
         log: function (what, type) {
-            if (!DEBUG) { return; }
+            if (!Private.debug) { return; }
 
             if (typeof type === 'undefined') {
                 type = 'log';
