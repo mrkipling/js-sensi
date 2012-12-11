@@ -14,8 +14,48 @@ var Sensi = Sensi || (function ($, global, undefined) {
             action: -1,
             features: [],
             current_user: -1
+        },
+
+        init: function() {
+            // get the page name
+            var page = $('meta[name="page"]').attr("content");
+            if (typeof page !== 'undefined' && page !== '') {
+                Private.meta.page = page;
+            }
+
+            // get the action
+            var action = $('meta[name="action"]').attr("content");
+            if (typeof action !== 'undefined' && action !== '') {
+                Private.meta.action = action;
+            }
+
+            // get the list of features
+            var features = $('meta[name="features"]').attr("content");
+
+            if (features === '') {
+                features = [];
+            } else {
+                features = features.split(' ');
+                // get rid of duplicates
+                features.sort();
+                for (var i = 1; i < features.length; i++) {
+                    if (features[i] === features[i - 1]) {
+                        features.splice(i--, 1);
+                    }
+                }
+            }
+
+            Private.meta.features = features;
+
+            // get the current user ID
+            var userid = $('meta[name="userid"]').attr("content");
+            if (typeof userid !== 'undefined' && userid !== '') {
+                Private.meta.current_user = userid;
+            }
         }
     };
+
+    Private.init();
 
     // debug mode?
     if (global.DEBUG) {
@@ -28,44 +68,6 @@ var Sensi = Sensi || (function ($, global, undefined) {
         settings: {
             meta: function (setting) {
                 return Private.meta[setting];
-            },
-
-            init: function() {
-                // get the page name
-                var page = $('meta[name="page"]').attr("content");
-                if (typeof page !== 'undefined' && page !== '') {
-                    Private.meta.page = page;
-                }
-
-                // get the action
-                var action = $('meta[name="action"]').attr("content");
-                if (typeof action !== 'undefined' && action !== '') {
-                    Private.meta.action = action;
-                }
-
-                // get the list of features
-                var features = $('meta[name="features"]').attr("content");
-
-                if (features === '') {
-                    features = [];
-                } else {
-                    features = features.split(' ');
-                    // get rid of duplicates
-                    features.sort();
-                    for (var i = 1; i < features.length; i++) {
-                        if (features[i] === features[i - 1]) {
-                            features.splice(i--, 1);
-                        }
-                    }
-                }
-
-                Private.meta.features = features;
-
-                // get the current user ID
-                var userid = $('meta[name="userid"]').attr("content");
-                if (typeof userid !== 'undefined' && userid !== '') {
-                    Private.meta.current_user = userid;
-                }
             },
 
             feature_enabled: function (feature) {
@@ -158,7 +160,6 @@ var Sensi = Sensi || (function ($, global, undefined) {
         logic: {},
 
         init: function() {
-            Utils.settings.init(); // populate the meta values
             App.init_page();       // initialise page-specific JS, if it exists
             App.init_features();   // initialise all of the features
         },
