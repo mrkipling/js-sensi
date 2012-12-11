@@ -28,17 +28,9 @@ Ultimately I would like this to be the "JS scaffolding" that I use on most of my
 
 * I also really liked the Utils.settings stuff, so that went in with a few modifications. Being able to tell easily what 'page' you are on and who the currently logged in user is - that is very useful. Same with the console.log wrapper. I can see how this could be expanded upon as the site and requirements grow. Why think small with any of this? Get the structure in place first; then in a few months time the code might not want to make you drink 8 cups of coffee every morning and secretly cry when you don't think that anybody is looking, becase a somewhat (if not perfect) structure is already in place.
 
-* I moved the Sparky.utils.setting.debug bool into DEBUG (much shorter!) into the main template as a global (DEBUG) as that is easier to set automatically in a template when using a framework. DEBUG is now used everywhere.
-
 ##Why not just use Sparky?
 
-Sparky is fantastic, and if that was my only option then I would be all over it. However, I know how I like to write JS code and I had a spare Friday evening (and the skills to change code! fancy that) so I created something that is more suited to my particular needs and development style (no AJAX wrapper, controller/action tweaked slightly, the addition of features, amongst other things).
-
-That said, it is very much a work in progress. It is 2-3 hours of work piggy-backed on top of somebody elses much more well-thought out work. I hope (and plan, through usage) to make it more awesome over time. I think that it is ready for smaller projects already, so I imagine that it will just grow over time.
-
-##Why am I rambling so much?
-
-I got home from work, drank some mostly-Belgian beers, and decided to hack away for most of the evening on this. Beer + writing a README = rambling. I'll cut down on the waffle during a later edit, I'm sure.
+Sparky is fantastic, and if that was my only option then I would be all over it. However, I know how I like to write JS code and I had a spare Friday evening, so I created something that is more suited to my particular needs and development style (no AJAX wrapper, controller/action tweaked slightly, and the addition of features, amongst other things).
 
 ##Why is it called js-sensi?
 
