@@ -1,3 +1,3 @@
-Sensi.App['user_logged_in'] = function () {
-    return Sensi.Utils.settings.meta.currentUser !== -1;
+Sensi.Utils.user_logged_in = function () {
+    return Sensi.Utils.settings.meta('current_user') !== -1;
 };

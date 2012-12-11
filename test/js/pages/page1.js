@@ -1,4 +1,4 @@
-Sensi.Pages['page1'] = {
+Sensi.Pages.page1 = {
 
     description: "This is page one of the site. It doesn't do a lot.",
 

@@ -1,4 +1,4 @@
-Sensi.Features['append_content'] = {
+Sensi.Features.append_content = {
 
     description: "Appends some content to the #content element.",
 
