@@ -34,6 +34,4 @@ Sparky is fantastic, and if that was my only option then I would be all over it.
 
 ##Why is it called js-sensi?
 
-Offiical line: it's a sensible way to structure your JavaScript files. (as in, "sensi"-ble).
-
-Unofficial-line: use your imagination. It's a Javascript template, and "js-template" wasn't very catchy...
+It's a Javascript template, and "js-template" wasn't very catchy...
